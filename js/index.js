@@ -13,7 +13,7 @@ import howIcon2 from "../image/howItWork/how_icon2.png";
 import howIcon3 from "../image/howItWork/how_icon3.png";
 
 var Index = React.createClass({
-	getInitialState: function(){
+	getInitialState: function () {
 		return {
 			user: {},
 			watchList: [],
@@ -21,34 +21,45 @@ var Index = React.createClass({
 		}
 	},
 
-	componentDidMount: function(){
+	componentDidMount: function () {
 		this.$topSection = $('div.top_section');
 		this.$topSection_container = $('div.container', this.$topSection);
 
+		this.isMobile =  /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+		var screen = this.getScreenSize();
+		this.isWidthScreen = (parseInt(screen.width) > parseInt(screen.height));
 
-		this.$topSection.css("height", this.getScreenSize().height);
+		if(!this.isWidthScreen) {
+			this.$topSection.css({
+				"height": 850,
+				"background-position-x": -100
+			});
+		} else {
+			this.$topSection.css("height", screen.height);
+		}
+
 		this.setCenter(this.$topSection_container);
 
 	},
 
-	getScreenSize: function(){
+	getScreenSize: function () {
 		return {
 			height: $(window).height(),
 			width: $(window).width()
 		};
 	},
 
-	setCenter: function($element) {
+	setCenter: function ($element) {
 		var screen = this.getScreenSize();
-		var top = (screen.height / 2) - ($element.height() / 2);
+		var top = (this.$topSection.height() / 2) - ($element.height() / 2);
 		$element.css({
 			'top': top
 		})
 	},
 
-	render: function(){
+	render: function () {
 		var separateSection = (text) => {
-			return(
+			return (
 				<div className="separateLine row">
 					<p className="columns eight">
 						{text}
@@ -66,7 +77,7 @@ var Index = React.createClass({
 
 					<div className="row">
 						<div className="column">
-							<img src={howIcon1} />
+							<img src={howIcon1}/>
 						</div>
 					</div>
 					<div className="row description">
@@ -81,7 +92,7 @@ var Index = React.createClass({
 
 					<div className="row">
 						<div className="column">
-							<img src={howIcon2} />
+							<img src={howIcon2}/>
 						</div>
 					</div>
 
@@ -90,11 +101,11 @@ var Index = React.createClass({
 						<div className="sub-title">Big Data Analysis Cloud Security</div>
 					</div>
 
-					<div className="greyLine row"> </div>
+					<div className="greyLine row"></div>
 
 					<div className="row">
 						<div className="column">
-							<img src={howIcon3} />
+							<img src={howIcon3}/>
 						</div>
 					</div>
 
@@ -109,6 +120,7 @@ var Index = React.createClass({
 		return (
 			<div className="home">
 				<Header/>
+
 				<div className="top_section u-full-width">
 					<div className="container">
 						<div className="row">
@@ -118,7 +130,8 @@ var Index = React.createClass({
 						</div>
 						<div className="row">
 							<div className="sub-title column">
-								Five functions to help children, development and giving them the best time to play, grow, and explore the world!
+								Five functions to help children, development and giving them the best time to play, grow, and explore
+								the world!
 							</div>
 						</div>
 					</div>

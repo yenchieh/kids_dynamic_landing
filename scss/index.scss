@@ -5,6 +5,7 @@ $yellow: #FFD03E;
 $purple: #7573C0;
 $green: #00C4B3;
 $red: #F54B7F;
+$lightGrey: #E8e8e8;
 
 @import "normalize.css";
 @import "skeleton.css";
@@ -51,9 +52,9 @@ body {
 }
 
 .greyLine {
-	background-color: $grey;
+	background-color: $lightGrey;
 	height: 2px;
-	width: 65%;
+	width: 80%;
 	display: inline-block;
 	min-width: 300px;
 	max-width: 800px;
@@ -109,7 +110,7 @@ a {
 		text-align: center;
 
 		.title {
-			font-size: 3em;
+			font-size: 2.6em;
 			color: white;
 		}
 
@@ -245,6 +246,7 @@ a {
 
 		.row.description {
 			margin-top: 2em;
+			padding: 0 10px;
 
 			.title {
 				font-size: 1.7em;
